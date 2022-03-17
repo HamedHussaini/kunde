@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kunde</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="application/ecmascript">
+            function hallo(){
+                const url="/?navn="+ $("#txt").val();
+                $.get(url, function (data){
+                    $("#hallo").html(data);
+                })
+            }
+    </script>
+</head>
+<body>
+
+Skriv inn navnet dit: <input id="txt" type="text" >
+    <button id="btn" onclick="hallo()">clik</button>
+    <div id="hallo"></div>
+</body>
+</html>
