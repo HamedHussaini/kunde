@@ -8,7 +8,7 @@
             function hallo(){
                 const kunde ={
                     navn : $("#navn").val(),
-                    address : $("#addresse").val()
+                    addresse : $("#addresse").val()
                 }
                 $.post("/lagre",kunde, function (){
                     hentAlle();
@@ -23,7 +23,7 @@
             function formaterData(kunder){
                 let ut = "<table><tr><th>Navn</th><th>Adresse</th></tr>";
                 for(const kunde of kunder){
-                    ut+="<tr><td>"+kunde.navn+"</td><td>"+kunde.adresse+"</td></tr>";
+                    ut+="<tr><td>"+kunde.navn+"</td><td>"+kunde.addresse+"</td></tr>";
                 }
                 ut+="</table>";
                 $("#ut").html(ut);
