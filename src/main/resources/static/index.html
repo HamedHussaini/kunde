@@ -6,17 +6,35 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="application/ecmascript">
             function hallo(){
-                const url="/?navn="+ $("#txt").val();
-                $.get(url, function (data){
-                    $("#hallo").html(data);
-                })
+                const kunde ={
+                    navn : $("#navn").val(),
+                    address : $("#addresse").val()
+                }
+                $.post("/lagre",kunde, function (){
+                    hentAlle();
+                });
+            }
+            function hentAlle(){
+                $.get("/hentAlle", function (data){
+                    formaterData(data);
+                });
+
+            }
+            function formaterData(kunder){
+                let ut = "<table><tr><th>Navn</th><th>Adresse</th></tr>";
+                for(const kunde of kunder){
+                    ut+="<tr><td>"+kunde.navn+"</td><td>"+kunde.adresse+"</td></tr>";
+                }
+                ut+="</table>";
+                $("#ut").html(ut);
             }
     </script>
 </head>
 <body>
 
-Skriv inn navnet dit: <input id="txt" type="text" >
+Skriv inn navnet dit: <input id="navn" type="text" >
+Skriv inn navnet adresse: <input id="addresse" type="text" >
     <button id="btn" onclick="hallo()">clik</button>
-    <div id="hallo"></div>
+    <div id="ut"></div>
 </body>
 </html>
