@@ -19,5 +19,20 @@ public class kundeController {
     public List<Kunde> henteAlle(){
         return alleKunder;
     }
+    @GetMapping("/hentBiler1")
+    public List<Bil> hentBiler1(){
+        List<Bil> listBiler = new ArrayList<>();
+        listBiler.add(new Bil("Audi", "A4"));
+        listBiler.add(new Bil("Volvo", "C4"));
+        listBiler.add(new Bil("Audi", "A8"));
+        return listBiler;
+
+    }
+
+
+    @GetMapping("/slettAlle")
+    public void slettAlle(){
+        alleKunder.clear();
+    }
 
 }
